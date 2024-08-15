@@ -23,6 +23,8 @@ model User {
 
   firstName   String?
   lastName    String?
+
+  @@map("users")
 }
 
 model Product {
@@ -36,6 +38,8 @@ model Product {
   orderItems  OrderItem[]
 
   images      String?
+
+  @@map("products")
 }
 
 model Order {
@@ -45,6 +49,8 @@ model Order {
   orderItems  OrderItem[]
 
   userId      Int
+
+  @@map("orders")
 }
 
 model OrderItem {

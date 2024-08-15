@@ -9,7 +9,8 @@ export class AuthService {
   constructor(private prisma: PrismaService) {}
 
   async signup(dto: AuthDto) {
-    const hash = await argon.hash(dto.password);
+    const passwordStr = String(dto.password);
+    const hash = await argon.hash(passwordStr);
 
     try {
       const user = await this.prisma.user.create({
@@ -19,6 +20,7 @@ export class AuthService {
         },
       });
 
+      console.log(user);
       return user;
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
