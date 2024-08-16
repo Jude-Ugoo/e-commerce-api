@@ -24,6 +24,8 @@ model User {
   firstName   String?
   lastName    String?
 
+  products Product[]
+
   @@map("users")
 }
 
@@ -36,8 +38,10 @@ model Product {
   category    String
   stockQty    Int
   orderItems  OrderItem[]
-
   images      String?
+
+  userId      Int
+  user        User?   @relation(fields: [userId], references: [id])
 
   @@map("products")
 }
